@@ -1,0 +1,23 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image: url('../img/bg/bg-decktop.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  main {
+    flex-grow: 1;
+  }
+}
+
+.title {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 120%;
+  background: linear-gradient(90deg, #f3d27e 0%, #a45a2c 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
