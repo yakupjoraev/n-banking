@@ -1,19 +1,3 @@
-import Onboard from '@web3-onboard/core';
-import injectedModule from '@web3-onboard/injected-wallets';
-import { ethers } from 'ethers';
-
-const injected = injectedModule();
-const onboard = Onboard({
-  wallets: [injected],
-  chains: [
-    {
-      id: '0x89',
-      token: 'MATIC',
-      label: 'Polygon',
-      rpcUrl: 'https://polygon-mainnet.infura.io/v3/a722278d431a4cc1a7529963d2d66b25'
-    }
-  ]
-});
 const usdt = {
   address: '0xc2132D05D31c914a87C6611C10748AEb04B58e8F',
   abi: [
@@ -28,8 +12,9 @@ const sale = {
 }
 
 let wallets = null;
-let shouldBeReady = false;
-let connected = false;
+let provider = null;
+let signer = null;
+let address = null;
 let nbncAmount = 0;
 let usdtAmount = 0;
 const rate = 2;
@@ -44,15 +29,35 @@ window.onload = function() {
   }
 
   async function connect () {
-    wallets = await onboard.connectWallet();
-    if (!wallets?.[0]) {
-      shouldBeReady = true;
-      submit.innerHTML = 'CONNECT';
+    if(window.ethereum){
+      try {
+        await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
+        provider = new ethers.providers.Web3Provider(window.ethereum);
+        signer = provider.getSigner();
+        const network = await provider.getNetwork();
+        if (network.chainId !== 137) {
+          alert('Wrong network');
+          return;
+        }
+        signer = provider.getSigner();
+        address = await signer.getAddress();
+      } catch (error) {
+        console.error(error);
+        return;
+      }
+      window.ethereum.on('accountsChanged', () => {
+        location.reload();
+      });
+      window.ethereum.on('chainChanged', () => {
+        location.reload();
+      });
     } else {
-      submit.innerHTML = 'TRADE NOW';
-      connected = true;
+      alert('Metamask is not installed');
     }
   }
+  connect().catch(console.error)
 
   usdtInput.addEventListener('input', function () {
     usdtAmount = Number(usdtInput.value) || 0;
@@ -65,38 +70,34 @@ window.onload = function() {
     usdtInput.value = usdtAmount.toString();
   });
   submit.addEventListener('click', async function () {
-    if (!connected && shouldBeReady) {
+    if (!signer) {
       connect().catch(console.error);
       return;
     }
-    if (!connected) return;
     if (!(nbncAmount > 0)) {
-      console.log('Amount should be greater than 0');
+      alert('Amount should be greater than 0');
       return;
     }
-    const ethersProvider =
-      new ethers.providers.Web3Provider(wallets[0].provider, 'any');
-    const signer = ethersProvider.getSigner();
     usdt.contract = new ethers.Contract(
-      usdt.address, usdt.abi, ethersProvider
+      usdt.address, usdt.abi, signer
     );
     sale.contract = new ethers.Contract(
       sale.address, sale.abi, signer
     );
-    const balance = Number(ethers.formatUnits(
-      await usdt.contract.balanceOf(wallets[0].address), 6
+    const balance = Number(ethers.utils.formatUnits(
+      await usdt.contract.balanceOf(address), 6
     ));
     if (!(balance >= usdtAmount)) {
       alert('Not enough usdt amount');
       return;
     }
-    const allowance = Number(ethers.formatUnits(
-      await usdt.contract.allowance(wallets[0].address, sale.contract.address), 6
+    const allowance = Number(ethers.utils.formatUnits(
+      await usdt.contract.allowance(address, sale.contract.address), 6
     ));
     if (!(allowance >= usdtAmount)) {
       alert('Not enough usdt allowance, approve usdt first');
       const tx = await usdt.contract
-        .approve(sale.contract.address, ethers.parseUnits(nbncAmount.toString()));
+        .approve(sale.contract.address, ethers.utils.parseUnits(usdtAmount.toString(), 6));
       const txReady = await tx.wait(3);
       if (txReady.status === 1) {
         alert(`Tx hash ${tx.hash}, submit trade transaction now`);
@@ -105,7 +106,7 @@ window.onload = function() {
         return;
       }
     }
-    const tx = await sale.contract.buy(ethers.parseUnits(nbncAmount.toString()));
+    const tx = await sale.contract.buy(ethers.utils.parseUnits(nbncAmount.toString()));
     const txReady = await tx.wait();
     if (txReady.status === 1) {
       alert(`Tx hash ${tx.hash}`);
