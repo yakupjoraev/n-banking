@@ -51,3 +51,33 @@ function fixedNav() {
   }
 }
 window.addEventListener('scroll', fixedNav)
+
+
+var swiper = new Swiper(".partners__slider", {
+  slidesPerView: 1,
+  spaceBetween: 10,
+  loop: true,
+  navigation: {
+    nextEl: ".partners__slider-arrow-next",
+    prevEl: ".partners__slider-arrow-prev",
+  },
+
+  // Responsive breakpoints
+  breakpoints: {
+    // when window width is >= 320px
+    320: {
+      slidesPerView: 1,
+      spaceBetween: 20
+    },
+    // when window width is >= 480px
+    767: {
+      slidesPerView: 2,
+      spaceBetween: 40
+    },
+    // when window width is >= 640px
+    1024: {
+      slidesPerView: 3,
+      spaceBetween: 80
+    }
+  }
+});
