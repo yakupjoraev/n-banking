@@ -37,7 +37,11 @@ let { src, dest } = require('gulp'),
     clean_css = require('gulp-clean-css'),
     rename = require('gulp-rename'),
     uglify = require('gulp-uglify-es').default,
-    imagemin = require('gulp-imagemin')
+    imagemin = require('gulp-imagemin'),
+    webpack = require('webpack'),
+    webpackStream = require('webpack-stream'), // Webpack
+    // eSLintPlugin = require('eslint-webpack-plugin'), // Eslint для Webpack
+    pathM = require('path');
 
 // Browser Sync
 function browserSync(params) {
@@ -85,9 +89,62 @@ function img() {
 }
 
 // JavaScript
+const webpackDevtool = false;
+const webpackMode = 'production';
+const webpackMinimize = true;
+
+const webpackConfig = {
+    mode: webpackMode,
+    devtool: webpackDevtool,
+    output: {
+      filename: 'scripts.js',
+    },
+    resolve: {
+      alias: {
+        process: "process/browser"
+      },
+      fallback: {
+        "http": false,
+        "https": false,
+        "crypto": false,
+        "crypto-browserify": pathM.resolve('crypto-browserify'),
+      }
+    },
+    module: {
+      rules: [
+        {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+            },
+          },
+        },
+      ],
+    },
+    plugins: [
+      new webpack.ProvidePlugin({
+        Buffer: ['buffer', 'Buffer'],
+      }),
+      new webpack.ProvidePlugin({
+        process: 'process/browser',
+      }),
+    //   new eSLintPlugin(),
+    ],
+    optimization: {
+      minimize: webpackMinimize,
+    },
+    performance: {
+      hints: false,
+    },
+  };
+
 function js() {
     return src(path.src.js)
-        .pipe(fileinclude())
+        // .pipe(fileinclude())
+        .pipe(webpackStream(webpackConfig))
         .pipe(dest(path.build.js))
         .pipe(uglify())
         .pipe(

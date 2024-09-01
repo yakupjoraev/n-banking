@@ -192,7 +192,6 @@ body.locked {
   font-size: 36px;
   line-height: 120%;
   background: -webkit-gradient(linear, left top, right top, from(#f3d27e), to(#a45a2c));
-  background: -o-linear-gradient(left, #f3d27e 0%, #a45a2c 100%);
   background: linear-gradient(90deg, #f3d27e 0%, #a45a2c 100%);
   background-clip: text;
   -webkit-background-clip: text;
@@ -240,7 +239,6 @@ body.locked {
   font-size: 20px;
   color: var(--white);
   -webkit-transition: color 0.2s linear;
-  -o-transition: color 0.2s linear;
   transition: color 0.2s linear;
 }
 
@@ -346,7 +344,6 @@ body.locked {
   border-radius: 12px;
   -webkit-backdrop-filter: blur(100px);
           backdrop-filter: blur(100px);
-  background: -o-linear-gradient(316deg, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%);
   background: linear-gradient(134deg, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%);
 }
 
@@ -443,7 +440,6 @@ body.locked {
   padding: 20px 56px;
   height: 94px;
   border-radius: 15px;
-  background: -o-linear-gradient(300deg, #f3d27e 0%, #c9733e 100%);
   background: linear-gradient(150deg, #f3d27e 0%, #c9733e 100%);
   border: 0;
   outline: 0;
@@ -524,7 +520,6 @@ body.locked {
   font-size: 36px;
   line-height: 120%;
   background: -webkit-gradient(linear, left top, right top, from(#f3d27e), to(#a45a2c));
-  background: -o-linear-gradient(left, #f3d27e 0%, #a45a2c 100%);
   background: linear-gradient(90deg, #f3d27e 0%, #a45a2c 100%);
   background-clip: text;
   -webkit-background-clip: text;
@@ -798,7 +793,6 @@ body.locked {
   padding: 20px;
   border-radius: 12px;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #151515)) padding-box, -webkit-gradient(linear, left top, right top, from(#F3D27E), to(#D46605)) border-box;
-  background: -o-linear-gradient(#151515 0 0) padding-box, -o-linear-gradient(left, #F3D27E, #D46605) border-box;
   background: linear-gradient(#151515 0 0) padding-box, linear-gradient(to right, #F3D27E, #D46605) border-box;
   border: 2px solid transparent;
 }
@@ -1064,7 +1058,6 @@ body.locked {
         -ms-transform: rotate(45deg);
             transform: rotate(45deg);
     -webkit-transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
-    -o-transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
     transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
     top: 8px;
   }
@@ -1076,7 +1069,6 @@ body.locked {
             transform: rotate(-45deg);
     bottom: 10px;
     -webkit-transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
-    -o-transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
     transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
   }
 
@@ -1094,7 +1086,6 @@ body.locked {
     width: 100%;
     background: var(--white);
     -webkit-transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
-    -o-transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
     transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
   }
 
@@ -1117,7 +1108,6 @@ body.locked {
         -ms-transform: scale(1);
             transform: scale(1);
     -webkit-transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
-    -o-transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
     transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
   }
 
