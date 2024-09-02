@@ -376,3 +376,10 @@
     }
   }
 }
+
+#submitButton .spinner {
+  display: none;
+}
+#submitButton.waiting .spinner {
+  display: block;
+}

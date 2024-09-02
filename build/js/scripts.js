@@ -164,6 +164,7 @@ window.onload = function() {
   const connectAddress = document.querySelector('#connectAddress');
   const connectButton = document.querySelector('#connectButton');
   const nbncBalance = document.querySelector('#nbncBalance');
+  const nbncBalanceHero = document.querySelector('#nbncBalanceHero');
 
   if (!usdtInput || !nbncInput || !submitButton) {
     console.error('Controls are not set');
@@ -220,6 +221,7 @@ window.onload = function() {
         const rawBalance = await nbnc.contract.balanceOf(address);
         const balance = Number(ethers.utils.formatUnits(rawBalance)) || 0;
         nbncBalance.innerHTML = balance.toString();
+        nbncBalanceHero.innerHTML = balance.toString();
       }
     } else {
       connectWrapper?.classList.remove('connect__connected');
@@ -249,7 +251,10 @@ window.onload = function() {
       alert('Amount should be greater than 0');
       return;
     }
-
+    if (submitButton.classList.contains('waiting')) {
+      alert('Please wait');
+      return;
+    }
     const balance = Number(ethers.utils.formatUnits(
       await usdt.contract.balanceOf(address), 6
     ));
@@ -262,22 +267,40 @@ window.onload = function() {
     ));
     if (!(allowance >= usdtAmount)) {
       alert('Not enough usdt allowance, approve usdt first');
-      const tx = await usdt.contract
-        .approve(sale.contract.address, ethers.utils.parseUnits(usdtAmount.toString(), 6));
-      const txReady = await tx.wait(3);
-      if (txReady.status === 1) {
-        alert(`Tx hash ${tx.hash}, submit trade transaction now`);
-      } else {
-        alert('Approve tx failed');
-        return;
+      submitButton.classList.add('waiting');
+      try {
+        const tx = await usdt.contract
+          .approve(sale.contract.address, ethers.utils.parseUnits(usdtAmount.toString(), 6));
+        const txReady = await tx.wait(3);
+        submitButton.classList.remove('waiting');
+        if (txReady.status === 1) {
+          alert(`Tx hash ${tx.hash}, submit trade transaction now`);
+        } else {
+          alert('Approve tx failed');
+          return;
+        }
+      } catch (error) {
+        console.error(error)
+        submitButton.classList.remove('waiting');
       }
     }
-    const tx = await sale.contract.buy(ethers.utils.parseUnits(nbncAmount.toString()));
-    const txReady = await tx.wait();
-    if (txReady.status === 1) {
-      alert(`Tx hash ${tx.hash}`);
-    } else {
-      alert('Trade tx failed');
+    try {
+      submitButton.classList.add('waiting');
+      const tx = await sale.contract.buy(ethers.utils.parseUnits(nbncAmount.toString()));
+      const txReady = await tx.wait();
+      submitButton.classList.remove('waiting');
+      if (txReady.status === 1) {
+        alert(`Tx hash ${tx.hash}`);
+        usdtInput.value = '';
+        nbncInput.value = '';
+        usdtAmount = 0;
+        nbncAmount = 0;
+      } else {
+        alert('Trade tx failed');
+      }
+    } catch (error) {
+      console.error(error)
+      submitButton.classList.remove('waiting');
     }
   });
 };

@@ -857,6 +857,14 @@ body.locked {
   font-size: 20px;
 }
 
+#submitButton .spinner {
+  display: none;
+}
+
+#submitButton.waiting .spinner {
+  display: block;
+}
+
 .info {
   margin: 160px 0 240px;
 }

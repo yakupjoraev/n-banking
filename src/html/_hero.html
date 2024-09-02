@@ -3,7 +3,9 @@
     <div class="hero__inner">
       <div class="hero__balance">
         <p class="hero__balance-label">Balance</p>
-        <div class="hero__balance-sum">5 555 555 <span>NBNС</span></div>
+        <div class="hero__balance-sum">
+          <span id="nbncBalanceHero" style="font-size: inherit">0</span> <span>NBNС</span>
+        </div>
       </div>
       <h1 class="hero__title title">N-BANKING</h1>
       <div class="hero__logo-wrapper">
@@ -40,11 +42,9 @@
             <p class="calc__text">2 USDT = 1 NBNC</p>
           </div>
 
-          <button id="submit" type="button" class="calc__btn">
-            TRADE NOW
-
-
-            <div class="spinner center" style="display: none;">
+          <button id="submitButton" type="button" class="calc__btn">
+            <span>TRADE NOW</span>
+            <div class="spinner center">
               <div class="spinner-blade"></div>
               <div class="spinner-blade"></div>
               <div class="spinner-blade"></div>
