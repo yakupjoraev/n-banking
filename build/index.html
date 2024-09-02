@@ -31,10 +31,13 @@
           <li class="menu__item">
             <div class="right-menu">
               <div class="right-menu__item">
-                <div class="right-menu__tokens">276 000 000 <span>NBNС</span></div>
+                <div class="right-menu__tokens">
+                  <span id="nbncBalance" style="font-size: inherit">0</span> <span>NBNС</span>
+                </div>
               </div>
-              <div class="right-menu__item">
-                <button type="button" class="right-menu__btn">Connect</button>
+              <div id="connectWrapper" class="right-menu__item">
+                <span id="connectAddress"></span>
+                <button id="connectButton" type="button" class="right-menu__btn">Connect</button>
               </div>
             </div>
           </li>
@@ -89,7 +92,7 @@
             <p class="calc__text">Enter the amount in USDT to invest</p>
             <p class="calc__text">2 USDT = 1 NBNC</p>
           </div>
-          <button id="submit" type="button" class="calc__btn">TRADE NOW</button>
+          <button id="submitButton" type="button" class="calc__btn">TRADE NOW</button>
         </div>
       </form>
     </div>

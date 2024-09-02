@@ -215,3 +215,16 @@
     -webkit-text-fill-color: transparent;
   }
 }
+
+#connectAddress {
+  display: none;
+}
+.connect__connected {
+  border-style: none !important;
+  #connectButton {
+    display: none;
+  }
+  #connectAddress {
+    display: inline;
+  }
+}

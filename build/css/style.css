@@ -312,6 +312,22 @@ body.locked {
   -webkit-text-fill-color: transparent;
 }
 
+#connectAddress {
+  display: none;
+}
+
+.connect__connected {
+  border-style: none !important;
+}
+
+.connect__connected #connectButton {
+  display: none;
+}
+
+.connect__connected #connectAddress {
+  display: inline;
+}
+
 .hero {
   padding: 80px 0;
 }

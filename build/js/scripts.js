@@ -94,6 +94,12 @@ const sale = {
     {"inputs":[{"internalType":"address","name":"usdtAddress","type":"address"},{"internalType":"address","name":"tokenAddress","type":"address"},{"internalType":"address","name":"receiver","type":"address"},{"internalType":"uint256","name":"rate","type":"uint256"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"userAddress","type":"address"},{"indexed":false,"internalType":"uint256","name":"paidAmount","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"purchasedAmount","type":"uint256"}],"name":"Buy","type":"event"},{"inputs":[{"internalType":"address","name":"tokenAddress","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"adminWithdraw","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenAmount","type":"uint256"}],"name":"buy","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"role","type":"string"},{"internalType":"address","name":"userAddress","type":"address"}],"name":"checkRole","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getRate","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getReceiver","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getTokenAddress","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getUsdtAddress","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"role","type":"string"},{"internalType":"address","name":"userAddress","type":"address"}],"name":"grantRole","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"role","type":"string"},{"internalType":"address","name":"userAddress","type":"address"}],"name":"revokeRole","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"rate","type":"uint256"}],"name":"setRate","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"receiver","type":"address"}],"name":"setReceiver","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"}
   ],
 }
+const nbnc = {
+  address: '0xEb74eB6F5060Cf855D6a89c40236b57ada40D52A',
+  abi: [
+    {"inputs":[{"internalType":"address","name":"receiver_","type":"address"},{"internalType":"string","name":"name_","type":"string"},{"internalType":"string","name":"symbol_","type":"string"},{"internalType":"uint256","name":"totalSupply_","type":"uint256"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"}
+  ],
+}
 
 let wallets = null;
 let provider = null;
@@ -106,8 +112,13 @@ const rate = 2;
 window.onload = function() {
   const usdtInput = document.querySelector('#usdtInput');
   const nbncInput = document.querySelector('#nbncInput');
-  const submit = document.querySelector('#submit');
-  if (!usdtInput || !nbncInput || !submit) {
+  const submitButton = document.querySelector('#submitButton');
+  const connectWrapper = document.querySelector('#connectWrapper');
+  const connectAddress = document.querySelector('#connectAddress');
+  const connectButton = document.querySelector('#connectButton');
+  const nbncBalance = document.querySelector('#nbncBalance');
+
+  if (!usdtInput || !nbncInput || !submitButton) {
     console.error('Controls are not set');
     return;
   }
@@ -119,16 +130,26 @@ window.onload = function() {
           method: "eth_requestAccounts",
         });
         provider = new ethers.providers.Web3Provider(window.ethereum);
-        signer = provider.getSigner();
         const network = await provider.getNetwork();
         if (network.chainId !== 137) {
           alert('Wrong network');
           return;
         }
         signer = provider.getSigner();
+        usdt.contract = new ethers.Contract(
+          usdt.address, usdt.abi, signer
+        );
+        sale.contract = new ethers.Contract(
+          sale.address, sale.abi, signer
+        );
+        nbnc.contract = new ethers.Contract(
+          nbnc.address, nbnc.abi, provider
+        );
         address = await signer.getAddress();
+        setConnectControls().catch(console.error);
       } catch (error) {
         console.error(error);
+        setConnectControls().catch(console.error);
         return;
       }
       window.ethereum.on('accountsChanged', () => {
@@ -138,11 +159,30 @@ window.onload = function() {
         location.reload();
       });
     } else {
+      setConnectControls().catch(console.error);
       alert('Metamask is not installed');
     }
   }
-  connect().catch(console.error)
 
+  async function setConnectControls() {
+    if (address) {
+      connectWrapper?.classList.add('connect__connected');
+      connectAddress.innerHTML = `${address.slice(0,5)}...${address.slice(-3)}`;
+      connectAddress.dataset.address = address;
+      if (nbnc.contract) {
+        const rawBalance = await nbnc.contract.balanceOf(address);
+        const balance = Number(ethers.utils.formatUnits(rawBalance)) || 0;
+        nbncBalance.innerHTML = balance.toString();
+      }
+    } else {
+      connectWrapper?.classList.remove('connect__connected');
+    }
+  }
+
+
+  connectButton.addEventListener('click', function () {
+    connect().catch(console.error);
+  });
   usdtInput.addEventListener('input', function () {
     usdtAmount = Number(usdtInput.value) || 0;
     nbncAmount = usdtAmount / rate;
@@ -153,21 +193,16 @@ window.onload = function() {
     usdtAmount = nbncAmount * rate;
     usdtInput.value = usdtAmount.toString();
   });
-  submit.addEventListener('click', async function () {
+  submitButton.addEventListener('click', async function () {
     if (!signer) {
-      connect().catch(console.error);
+      alert('Wallet is not connected')
       return;
     }
     if (!(nbncAmount > 0)) {
       alert('Amount should be greater than 0');
       return;
     }
-    usdt.contract = new ethers.Contract(
-      usdt.address, usdt.abi, signer
-    );
-    sale.contract = new ethers.Contract(
-      sale.address, sale.abi, signer
-    );
+
     const balance = Number(ethers.utils.formatUnits(
       await usdt.contract.balanceOf(address), 6
     ));
