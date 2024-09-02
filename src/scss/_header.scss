@@ -351,3 +351,16 @@
     }
   }
 }
+
+#connectAddress {
+  display: none;
+}
+.connect__connected {
+  border-style: none !important;
+  #connectButton {
+    display: none;
+  }
+  #connectAddress {
+    display: inline;
+  }
+}
