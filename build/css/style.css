@@ -249,6 +249,69 @@ body.locked {
   cursor: pointer;
 }
 
+.right-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-column-gap: 18px;
+     -moz-column-gap: 18px;
+          column-gap: 18px;
+}
+
+.right-menu__item:has(.right-menu__btn) {
+  border-radius: 8px;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #151515)) padding-box, -webkit-gradient(linear, left top, right top, from(#F3D27E), to(#D46605)) border-box;
+  background: -o-linear-gradient(#151515 0 0) padding-box, -o-linear-gradient(left, #F3D27E, #D46605) border-box;
+  background: linear-gradient(#151515 0 0) padding-box, linear-gradient(to right, #F3D27E, #D46605) border-box;
+  border: 2px solid transparent;
+}
+
+.right-menu__tokens {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 110%;
+  background: -webkit-gradient(linear, left top, right top, from(#f3d27e), to(#a45a2c));
+  background: -o-linear-gradient(left, #f3d27e 0%, #a45a2c 100%);
+  background: linear-gradient(90deg, #f3d27e 0%, #a45a2c 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.right-menu__tokens span {
+  font-size: 16px;
+}
+
+.right-menu__btn {
+  position: relative;
+  z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  outline: 0;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 100%;
+  background: -o-linear-gradient(300deg, #f3d27e 0%, #c9733e 100%);
+  background: linear-gradient(150deg, #f3d27e 0%, #c9733e 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .hero {
   padding: 80px 0;
 }
@@ -807,6 +870,114 @@ body.locked {
   border-radius: 6px;
 }
 
+@media screen and (max-width: 1300px) {
+  .menu {
+    position: fixed;
+    background: var(--bg);
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    display: none;
+  }
+
+  .menu.active {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    pointer-events: all;
+    z-index: 22;
+    -webkit-animation: fade 0.1s linear;
+            animation: fade 0.1s linear;
+  }
+
+  .burger {
+    display: block;
+    position: relative;
+    height: 20px;
+    width: 30px;
+    z-index: 102;
+    cursor: pointer;
+  }
+
+  .burger.active-burger:before {
+    background: var(--orange);
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+    -webkit-transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
+    -o-transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
+    transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
+    top: 8px;
+  }
+
+  .burger.active-burger:after {
+    background: var(--orange);
+    -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    bottom: 10px;
+    -webkit-transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
+    -o-transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
+    transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
+  }
+
+  .burger.active-burger span {
+    -webkit-transform: scale(0);
+        -ms-transform: scale(0);
+            transform: scale(0);
+  }
+
+  .burger:before,
+  .burger:after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background: var(--white);
+    -webkit-transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
+    -o-transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
+    transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
+  }
+
+  .burger:before {
+    top: 0;
+  }
+
+  .burger::after {
+    bottom: 0;
+  }
+
+  .burger span {
+    position: absolute;
+    top: 9px;
+    right: 0;
+    width: 100%;
+    background: var(--white);
+    height: 2px;
+    -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+            transform: scale(1);
+    -webkit-transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
+    -o-transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
+    transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
+  }
+
+  .menu__item {
+    margin-top: 24px;
+  }
+}
+
 @media (max-width: 1200px) {
   .info {
     margin: 100px 0 120px;
@@ -1018,114 +1189,6 @@ body.locked {
   }
 }
 
-@media screen and (max-width: 991.98px) {
-  .menu {
-    position: fixed;
-    background: var(--bg);
-    left: 0;
-    top: 0;
-    height: 100vh;
-    width: 100vw;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    display: none;
-  }
-
-  .menu.active {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    pointer-events: all;
-    z-index: 22;
-    -webkit-animation: fade 0.1s linear;
-            animation: fade 0.1s linear;
-  }
-
-  .burger {
-    display: block;
-    position: relative;
-    height: 20px;
-    width: 30px;
-    z-index: 102;
-    cursor: pointer;
-  }
-
-  .burger.active-burger:before {
-    background: var(--orange);
-    -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-            transform: rotate(45deg);
-    -webkit-transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
-    -o-transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
-    transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
-    top: 8px;
-  }
-
-  .burger.active-burger:after {
-    background: var(--orange);
-    -webkit-transform: rotate(-45deg);
-        -ms-transform: rotate(-45deg);
-            transform: rotate(-45deg);
-    bottom: 10px;
-    -webkit-transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
-    -o-transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
-    transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
-  }
-
-  .burger.active-burger span {
-    -webkit-transform: scale(0);
-        -ms-transform: scale(0);
-            transform: scale(0);
-  }
-
-  .burger:before,
-  .burger:after {
-    content: "";
-    position: absolute;
-    height: 2px;
-    width: 100%;
-    background: var(--white);
-    -webkit-transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
-    -o-transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
-    transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
-  }
-
-  .burger:before {
-    top: 0;
-  }
-
-  .burger::after {
-    bottom: 0;
-  }
-
-  .burger span {
-    position: absolute;
-    top: 9px;
-    right: 0;
-    width: 100%;
-    background: var(--white);
-    height: 2px;
-    -webkit-transform: scale(1);
-        -ms-transform: scale(1);
-            transform: scale(1);
-    -webkit-transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
-    -o-transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
-    transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
-  }
-
-  .menu__item {
-    margin-top: 24px;
-  }
-}
-
 @media (max-width: 767.98px) {
   .container {
     max-width: 740px;
@@ -1133,6 +1196,14 @@ body.locked {
 
   .logo img {
     max-width: 152px;
+  }
+
+  .right-menu {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    row-gap: 20px;
   }
 
   .hero__inner {

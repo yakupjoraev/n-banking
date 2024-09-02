@@ -61,7 +61,7 @@
 }
 
 // Burger menu styles
-@media screen and (max-width: $burgerBreakpoint) {
+@media screen and (max-width: 1300px) {
 
   // .menu
   .menu {
@@ -150,4 +150,68 @@
 
   // .menu__link
   .menu__item-link {}
+}
+
+.right-menu {
+  display: flex;
+  align-items: center;
+  column-gap: 18px;
+
+  @media (max-width: $breakpoint768) {
+    flex-direction: column;
+    row-gap: 20px;
+  }
+
+  // .right-menu__item
+
+  &__item {
+
+    &:has(.right-menu__btn) {
+      border-radius: 8px;
+      background:
+        linear-gradient(#151515 0 0) padding-box,
+        /*this is your grey background*/
+        linear-gradient(to right, #F3D27E, #D46605) border-box;
+      border: 2px solid transparent;
+    }
+  }
+
+  // .right-menu__tokens
+
+  &__tokens {
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 110%;
+    background: linear-gradient(90deg, #f3d27e 0%, #a45a2c 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    span {
+      font-size: 16px;
+    }
+  }
+
+  // .right-menu__btn
+
+  &__btn {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: 0;
+    padding: 10px 14px;
+    border-radius: 8px;
+
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 100%;
+    background: linear-gradient(150deg, #f3d27e 0%, #c9733e 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }
