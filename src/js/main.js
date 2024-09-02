@@ -50,34 +50,80 @@ function fixedNav() {
     nav.classList.remove('fixed__nav')
   }
 }
-window.addEventListener('scroll', fixedNav)
+window.addEventListener('scroll', fixedNav);
 
+document.addEventListener('DOMContentLoaded', function () {
+  const langMenu = document.querySelector('.menu__lang');
 
-var swiper = new Swiper(".partners__slider", {
-  slidesPerView: 1,
-  spaceBetween: 10,
-  loop: true,
-  navigation: {
-    nextEl: ".partners__slider-arrow-next",
-    prevEl: ".partners__slider-arrow-prev",
-  },
-
-  // Responsive breakpoints
-  breakpoints: {
-    // when window width is >= 320px
-    320: {
-      slidesPerView: 1,
-      spaceBetween: 20
-    },
-    // when window width is >= 480px
-    767: {
-      slidesPerView: 2,
-      spaceBetween: 40
-    },
-    // when window width is >= 640px
-    1024: {
-      slidesPerView: 3,
-      spaceBetween: 80
-    }
+  if (!langMenu) {
+    return null
   }
+
+  const langButton = document.querySelector('.menu__lang-selected');
+  const langLinks = document.querySelectorAll('.menu__lang-link');
+  const langSelectedText = document.querySelector('.menu__lang-selected-text span');
+
+  // Открытие/закрытие меню при клике на кнопку
+  langButton.addEventListener('click', function (event) {
+    event.stopPropagation(); // предотвращаем всплытие события
+    langMenu.classList.toggle('active');
+  });
+
+  // Закрытие меню при выборе пункта и обновление текста
+  langLinks.forEach(function (link) {
+    link.addEventListener('click', function (event) {
+      event.preventDefault(); // предотвращаем переход по ссылке
+      const selectedLang = this.textContent; // получаем текст выбранного элемента
+      langSelectedText.textContent = selectedLang; // обновляем текст в блоке
+      langMenu.classList.remove('active'); // закрываем меню
+    });
+  });
+
+  // Закрытие меню при клике вне его области
+  document.addEventListener('click', function (event) {
+    if (!langMenu.contains(event.target)) {
+      langMenu.classList.remove('active');
+    }
+  });
 });
+
+
+function partnersSlider() {
+  const container = document.querySelector('.partners');
+
+  if (!container) {
+    return null
+  }
+
+  const swiper = new Swiper(".partners__slider", {
+    slidesPerView: 1,
+    spaceBetween: 10,
+    loop: true,
+    navigation: {
+      nextEl: ".partners__slider-arrow-next",
+      prevEl: ".partners__slider-arrow-prev",
+    },
+
+    // Responsive breakpoints
+    breakpoints: {
+      // when window width is >= 320px
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 20
+      },
+      // when window width is >= 480px
+      767: {
+        slidesPerView: 2,
+        spaceBetween: 40
+      },
+      // when window width is >= 640px
+      1024: {
+        slidesPerView: 3,
+        spaceBetween: 80
+      }
+    }
+  });
+}
+
+
+partnersSlider()

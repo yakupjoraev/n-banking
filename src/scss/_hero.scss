@@ -1,6 +1,14 @@
 .hero {
   padding: 80px 0;
 
+  @media screen and (max-width: 991px) {
+    padding-top: 40px;
+  }
+
+  @media (max-width: $breakpoint768) {
+    padding-top: 40px;
+  }
+
   // .hero__inner
 
   &__inner {
@@ -283,6 +291,9 @@
   // .calc__btn
 
   &__btn {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -310,6 +321,58 @@
 
     @media (max-width: $breakpoint768) {
       font-size: 18px;
+    }
+  }
+}
+
+.hero__balance {
+  display: none;
+
+  @media screen and (max-width: 1300px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    row-gap: 4px;
+  }
+
+  @media (max-width: $breakpoint768) {
+    row-gap: 2px;
+  }
+}
+
+.hero__balance-label {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 120%;
+  color: var(--white);
+
+  @media (max-width: $breakpoint768) {
+    font-size: 14px;
+  }
+}
+
+.hero__balance-sum {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 110%;
+  background: linear-gradient(90deg, #f3d27e 0%, #a45a2c 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  span {
+    font-size: 20px;
+  }
+
+  @media (max-width: $breakpoint768) {
+    font-size: 22px;
+
+    span {
+      font-size: 16px;
     }
   }
 }

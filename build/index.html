@@ -23,24 +23,41 @@
         </a>
 
         <ul class="menu">
-          <li class="menu__item"><a href="#" class="menu__item-link" data-scroll>Mission</a></li>
-          <li class="menu__item"><a href="#" class="menu__item-link" data-scroll>Concept</a></li>
-          <li class="menu__item"><a href="#" class="menu__item-link" data-scroll>Security and Support</a></li>
-          <li class="menu__item"><a href="#" class="menu__item-link" data-scroll>Contacts</a></li>
+          <li class="menu__item"><a href="#" class="menu__item-link" data-scroll>Trade</a></li>
+          <li class="menu__item"><a href="#" class="menu__item-link" data-scroll>About</a></li>
+          <li class="menu__item"><a href="#" class="menu__item-link" data-scroll>Contact</a></li>
+          <li class="menu__item"><a href="#" class="menu__item-link" data-scroll>Offerta</a></li>
 
-          <li class="menu__item">
-            <div class="right-menu">
-              <div class="right-menu__item">
-                <div class="right-menu__tokens">276 000 000 <span>NBNС</span></div>
+          <li class="menu__lang">
+            <button type="button" class="menu__lang-selected">
+              <img class="menu__lang-icon" width="22" height="22" src="./img/icons/lang-icon.png" alt="icon">
+
+              <div class="menu__lang-selected-text">
+                <span>EN</span>
+                <img width="12" height="6" src="./img/icons/lang-tringle.svg" alt="icon">
               </div>
-              <div class="right-menu__item">
-                <button type="button" class="right-menu__btn">Connect</button>
-              </div>
-            </div>
+            </button>
+
+            <ul class="menu__lang-list">
+              <li class="menu__lang-item"><a class="menu__lang-link" href="#">EN</a></li>
+              <li class="menu__lang-item"><a class="menu__lang-link" href="#">RU</a></li>
+              <li class="menu__lang-item"><a class="menu__lang-link" href="#">FR</a></li>
+              <li class="menu__lang-item"><a class="menu__lang-link" href="#">DE</a></li>
+              <li class="menu__lang-item"><a class="menu__lang-link" href="#">CH</a></li>
+              <li class="menu__lang-item"><a class="menu__lang-link" href="#">AR</a></li>
+              <li class="menu__lang-item"><a class="menu__lang-link" href="#">IN</a></li>
+            </ul>
           </li>
         </ul>
 
-
+        <div class="right-menu">
+          <div class="right-menu__item">
+            <div class="right-menu__tokens">276 000 000 <span>NBNС</span></div>
+          </div>
+          <div class="right-menu__item">
+            <button type="button" class="right-menu__btn">Connect</button>
+          </div>
+        </div>
 
         <div class="burger">
           <span></span>
@@ -55,6 +72,10 @@
       <section class="hero">
   <div class="container">
     <div class="hero__inner">
+      <div class="hero__balance">
+        <p class="hero__balance-label">Balance</p>
+        <div class="hero__balance-sum">5 555 555 <span>NBNС</span></div>
+      </div>
       <h1 class="hero__title title">N-BANKING</h1>
       <div class="hero__logo-wrapper">
         <img class="hero__logo" width="334" src="./img/logo-big.png" alt="logo-big">
@@ -89,7 +110,25 @@
             <p class="calc__text">Enter the amount in USDT to invest</p>
             <p class="calc__text">2 USDT = 1 NBNC</p>
           </div>
-          <button id="submit" type="button" class="calc__btn">TRADE NOW</button>
+          <button id="submit" type="button" class="calc__btn">
+            TRADE NOW
+
+
+            <div class="spinner center" style="display: none;">
+              <div class="spinner-blade"></div>
+              <div class="spinner-blade"></div>
+              <div class="spinner-blade"></div>
+              <div class="spinner-blade"></div>
+              <div class="spinner-blade"></div>
+              <div class="spinner-blade"></div>
+              <div class="spinner-blade"></div>
+              <div class="spinner-blade"></div>
+              <div class="spinner-blade"></div>
+              <div class="spinner-blade"></div>
+              <div class="spinner-blade"></div>
+              <div class="spinner-blade"></div>
+            </div>
+          </button>
         </div>
       </form>
     </div>
@@ -336,6 +375,16 @@
 </div>
     </main>
 
+
+    <div class="attantion error">
+      <p class="attantion__text">Тут наверное когда error</p>
+    </div>
+
+    <div class="attantion successful">
+      <p class="attantion__text">Тут наверноек когда successful</p>
+    </div>
+
+
     <!-- Footer -->
     <footer class="footer">
   <div class="container">
@@ -350,8 +399,7 @@
           <p class="footer__text">Join N-Banking and start your journey to financial freedom today!</p>
         </div>
 
-        <a class="footer__logo" href="#"><img class="footer__logo-img" width="68" height="70" src="./img/logo-mini.png"
-            alt="logo icon"></a>
+
       </div>
 
       <div class="footer__qr">
@@ -359,6 +407,24 @@
           <img class="footer__qr-pic" width="200" height="200" src="./img/qr.png" alt="qr pic">
         </div>
       </div>
+    </div>
+
+    <div class="footer__bottom">
+      <a class="footer__logo" href="#">
+        <img class="footer__logo-img" width="68" height="70" src="./img/logo-mini.png" alt="logo icon">
+        <img class="footer__logo-img--mobile" width="152" height="70" src="./img/logo.png" alt="logo icon">
+      </a>
+
+      <nav class="footer__nav">
+        <ul class="footer__nav-list">
+          <li class="footer__nav-item"><a class="footer__nav-link" href="#">Trade</a></li>
+          <li class="footer__nav-item"><a class="footer__nav-link" href="#">About</a></li>
+          <li class="footer__nav-item"><a class="footer__nav-link" href="#">Contact</a></li>
+          <li class="footer__nav-item"><a class="footer__nav-link" href="#">Offerta</a></li>
+        </ul>
+      </nav>
+
+      <p class="footer__copy">All rights reserved ©️N-BANKING</p>
     </div>
   </div>
 </footer>
