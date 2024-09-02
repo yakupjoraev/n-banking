@@ -66,7 +66,7 @@
 
         <div class="calc__change">
           <div class="calc__change-row">
-            <input class="calc__change-input" type="number">
+            <input id="usdtInput" class="calc__change-input" type="number">
             <div class="calc__change-token">
               <img class="calc__change-token-icon" width="48" height="48" src="./img/icons/usdt.png" alt="usdt icon">
               <p class="calc__change-token-text">USDT</p>
@@ -76,7 +76,7 @@
           <img class="calc__change-arrow" width="40" src="./img/icons/arrow-right.svg" alt="arrow-right icon">
 
           <div class="calc__change-row">
-            <input class="calc__change-input" type="number">
+            <input id="nbncInput" class="calc__change-input" type="number">
             <div class="calc__change-token">
               <img class="calc__change-token-icon" width="48" height="48" src="./img/icons/nb.png" alt="nb icon">
               <p class="calc__change-token-text">NBNС</p>
@@ -89,7 +89,7 @@
             <p class="calc__text">Enter the amount in USDT to invest</p>
             <p class="calc__text">2 USDT = 1 NBNC</p>
           </div>
-          <button type="button" class="calc__btn">TRADE NOW</button>
+          <button id="submit" type="button" class="calc__btn">TRADE NOW</button>
         </div>
       </form>
     </div>
@@ -368,6 +368,9 @@
 </body>
 
 <script src="./js/swiper-bundle.min.js"></script>
+<script type="module" src="
+https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js
+"></script>
 <script src="./js/scripts.min.js"></script>
 
 </html>
