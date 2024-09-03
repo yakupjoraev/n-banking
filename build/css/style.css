@@ -620,6 +620,18 @@ body.locked {
   display: inline;
 }
 
+#nbncBalance {
+  font-size: inherit;
+}
+
+.right-menu__tokens {
+  display: none;
+}
+
+.right-menu__tokens.visible {
+  display: block;
+}
+
 .hero {
   padding: 80px 0;
 }
@@ -830,6 +842,10 @@ body.locked {
 
 .hero__balance {
   display: none;
+}
+
+.hero__balance-hidden {
+  display: none !important;
 }
 
 .hero__balance-label {

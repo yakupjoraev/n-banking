@@ -34,6 +34,8 @@ window.onload = function() {
   const connectButton = document.querySelector('#connectButton');
   const nbncBalance = document.querySelector('#nbncBalance');
   const nbncBalanceHero = document.querySelector('#nbncBalanceHero');
+  const heroBalanceWrapper = document.querySelector('.hero__balance');
+  const headerBalanceWrapper = document.querySelector('.right-menu__tokens');
 
   if (!usdtInput || !nbncInput || !submitButton) {
     console.error('Controls are not set');
@@ -91,6 +93,8 @@ window.onload = function() {
         const balance = Number(ethers.utils.formatUnits(rawBalance)) || 0;
         nbncBalance.innerHTML = balance.toString();
         nbncBalanceHero.innerHTML = balance.toString();
+        heroBalanceWrapper?.classList.remove('hero__balance-hidden');
+        headerBalanceWrapper?.classList.add('visible')
       }
     } else {
       connectWrapper?.classList.remove('connect__connected');

@@ -340,6 +340,10 @@
   @media (max-width: $breakpoint768) {
     row-gap: 2px;
   }
+
+  &-hidden {
+    display: none !important;
+  }
 }
 
 .hero__balance-label {

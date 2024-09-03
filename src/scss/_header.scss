@@ -364,3 +364,12 @@
     display: inline;
   }
 }
+#nbncBalance {
+  font-size: inherit;
+}
+.right-menu__tokens {
+  display: none;
+  &.visible {
+    display: block;
+  }
+}
