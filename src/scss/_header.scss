@@ -189,6 +189,7 @@
   // .right-menu__tokens
 
   &__tokens {
+    display: none;
     font-family: var(--second-family);
     font-weight: 400;
     font-size: 22px;
@@ -202,8 +203,15 @@
       font-size: 16px;
     }
 
+    &.visible {
+      display: block;
+    }
+
     @media screen and (max-width: 1300px) {
       display: none;
+      &.visible {
+        display: none;
+      }
     }
   }
 
@@ -366,10 +374,4 @@
 }
 #nbncBalance {
   font-size: inherit;
-}
-.right-menu__tokens {
-  display: none;
-  &.visible {
-    display: block;
-  }
 }

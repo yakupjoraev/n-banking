@@ -93,7 +93,7 @@ window.onload = function() {
         const balance = Number(ethers.utils.formatUnits(rawBalance)) || 0;
         nbncBalance.innerHTML = balance.toString();
         nbncBalanceHero.innerHTML = balance.toString();
-        heroBalanceWrapper?.classList.remove('hero__balance-hidden');
+        heroBalanceWrapper?.classList.add('visible');
         headerBalanceWrapper?.classList.add('visible')
       }
     } else {

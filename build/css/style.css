@@ -457,6 +457,7 @@ body.locked {
 }
 
 .right-menu__tokens {
+  display: none;
   font-family: var(--second-family);
   font-weight: 400;
   font-size: 22px;
@@ -471,6 +472,10 @@ body.locked {
 
 .right-menu__tokens span {
   font-size: 16px;
+}
+
+.right-menu__tokens.visible {
+  display: block;
 }
 
 .right-menu__btn {
@@ -622,14 +627,6 @@ body.locked {
 
 #nbncBalance {
   font-size: inherit;
-}
-
-.right-menu__tokens {
-  display: none;
-}
-
-.right-menu__tokens.visible {
-  display: block;
 }
 
 .hero {
@@ -842,10 +839,6 @@ body.locked {
 
 .hero__balance {
   display: none;
-}
-
-.hero__balance-hidden {
-  display: none !important;
 }
 
 .hero__balance-label {
@@ -1407,6 +1400,10 @@ body.locked {
     display: none;
   }
 
+  .right-menu__tokens.visible {
+    display: none;
+  }
+
   .menu__lang {
     margin-top: 20px;
     -webkit-box-orient: vertical;
@@ -1421,7 +1418,7 @@ body.locked {
     margin: 0 auto;
   }
 
-  .hero__balance {
+  .hero__balance.visible {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
